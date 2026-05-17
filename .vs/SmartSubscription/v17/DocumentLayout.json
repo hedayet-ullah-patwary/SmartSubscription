@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\services\\userroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\services\\userroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\views\\dashboard\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\views\\dashboard\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "API\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "API\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-17T20:32:10.764Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MapperConfig.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Mapper\\MapperConfig.cs",
+              "RelativeDocumentMoniker": "BLL\\Mapper\\MapperConfig.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Mapper\\MapperConfig.cs",
+              "RelativeToolTip": "BLL\\Mapper\\MapperConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T20:31:20.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRoleService.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\UserRoleService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\UserRoleService.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\UserRoleService.cs",
+              "RelativeToolTip": "BLL\\Services\\UserRoleService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB8AAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T20:30:52.239Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Analytics.cshtml",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Dashboard\\Analytics.cshtml",
+              "RelativeDocumentMoniker": "API\\Views\\Dashboard\\Analytics.cshtml",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Dashboard\\Analytics.cshtml",
+              "RelativeToolTip": "API\\Views\\Dashboard\\Analytics.cshtml",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAAAJAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-17T20:30:24.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T14:49:31.075Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

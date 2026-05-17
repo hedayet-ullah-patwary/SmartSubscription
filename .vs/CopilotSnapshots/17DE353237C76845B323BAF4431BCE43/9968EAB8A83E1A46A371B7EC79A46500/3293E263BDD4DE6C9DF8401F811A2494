@@ -1,0 +1,12 @@
+﻿using DAL.EF.Tables;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DAL.Interfaces
+{
+    public interface IRoleRepository : IRepository<Roles>
+    {
+        Roles GetByName(string name);
+    }
+}

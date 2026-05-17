@@ -1,0 +1,156 @@
+﻿@model List<DAL.EF.Tables.ApiUsage>
+
+@{
+    ViewData["Title"] = "API Analytics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <div class="row mb-4">
+
+        <div class="col-md-12">
+
+            <h2 class="fw-bold">
+                API Analytics Dashboard
+            </h2>
+
+            <p class="text-muted">
+                Monitor API requests and performance
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- SUMMARY -->
+    <!-- ========================================= -->
+
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Total Requests</h5>
+
+                    <h2 class="text-primary">
+                        @Model.Count()
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Success Requests</h5>
+
+                    <h2 class="text-success">
+                        @Model.Count(x => x.StatusCode == 200)
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center">
+
+                    <h5>Failed Requests</h5>
+
+                    <h2 class="text-danger">
+                        @Model.Count(x => x.StatusCode != 200)
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- TABLE -->
+    <!-- ========================================= -->
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+
+                        <th>#</th>
+                        <th>User ID</th>
+                        <th>Endpoint</th>
+                        <th>Status</th>
+                        <th>Response Time</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.Id</td>
+
+                            <td>@item.UserId</td>
+
+                            <td>@item.Endpoint</td>
+
+                            <td>
+
+                                @if (item.StatusCode == 200)
+                                {
+                                    <span class="badge bg-success">
+                                        @item.StatusCode
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">
+                                        @item.StatusCode
+                                    </span>
+                                }
+
+                            </td>
+
+                            <td>
+                                @item.ResponseTimeMs ms
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
