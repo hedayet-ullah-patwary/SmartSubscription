@@ -13,3 +13,4 @@ D:\AIUB\11th semester\Adv .net\SmartSubscription\BLL\obj\Debug\net8.0\ref\BLL.dl
 D:\AIUB\11th semester\Adv .net\SmartSubscription\BLL\bin\Debug\net8.0\DAL.dll
 D:\AIUB\11th semester\Adv .net\SmartSubscription\BLL\bin\Debug\net8.0\DAL.pdb
 D:\AIUB\11th semester\Adv .net\SmartSubscription\BLL\obj\Debug\net8.0\BLL.csproj.Up2Date
+D:\AIUB\11th semester\Adv .net\SmartSubscription\BLL\obj\Debug\net8.0\BLL.sourcelink.json

@@ -1,4 +1,4 @@
-﻿@model List<DAL.EF.Tables.ApiUsage>
+﻿
 
 @{
     ViewData["Title"] = "API Analytics";
@@ -55,9 +55,9 @@
 
                     <h5>Success Requests</h5>
 
-                    <h2 class="text-success">
+                    @* <h2 class="text-success">
                         @Model.Count(x => x.StatusCode == 200)
-                    </h2>
+                    </h2> *@
 
                 </div>
 
@@ -73,9 +73,9 @@
 
                     <h5>Failed Requests</h5>
 
-                    <h2 class="text-danger">
+                    @* <h2 class="text-danger">
                         @Model.Count(x => x.StatusCode != 200)
-                    </h2>
+                    </h2> *@
 
                 </div>
 

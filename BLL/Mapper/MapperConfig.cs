@@ -1,27 +1,27 @@
 using AutoMapper;
+using AutoMapper.Features;
 using BLL.DTOs;
 using DAL.EF.Tables;
+using Microsoft.Extensions.Logging;
 
-namespace BLL
+public class MapperConfig
 {
-    public class MapperConfig
+    public static MapperConfiguration config = new MapperConfiguration(cfg =>
     {
-        public static MapperConfiguration config = new MapperConfiguration(cfg =>
-        {
-            cfg.CreateMap<Users, LoginDTO>().ReverseMap();
-            cfg.CreateMap<Users, UserDTO>().ReverseMap();
-            cfg.CreateMap<Users, RegisterDTO>().ReverseMap();
-            cfg.CreateMap<Users, UserResponseDTO>().ReverseMap();
-            cfg.CreateMap<Features, FeatureDTO>().ReverseMap();
-            cfg.CreateMap<Payments, PaymentDTO>().ReverseMap();
-            cfg.CreateMap<Plans, PlanDTO>().ReverseMap();
-            cfg.CreateMap<Subscriptions, SubscriptionDTO>().ReverseMap();
-            cfg.CreateMap<Roles, RoleDTO>().ReverseMap();
-            cfg.CreateMap<ApiUsage, ApiUsageDTO>().ReverseMap();
-        });
-        public static Mapper GetMapper()
-        {
-            return new Mapper(config);
-        }
+        cfg.CreateMap<User, LoginDTO>().ReverseMap();
+        cfg.CreateMap<User, UserDTO>().ReverseMap();
+        cfg.CreateMap<User, RegisterDTO>().ReverseMap();
+        cfg.CreateMap<User, UserResponseDTO>().ReverseMap();
+        cfg.CreateMap<Feature, FeatureDTO>().ReverseMap();
+        cfg.CreateMap<Payment, PaymentDTO>().ReverseMap();
+        cfg.CreateMap<Plan, PlanDTO>().ReverseMap();
+        cfg.CreateMap<Subcription, SubscriptionDTO>().ReverseMap();
+        cfg.CreateMap<Role, RoleDTO>().ReverseMap();
+
+    }, null);
+
+    public static IMapper GetMapper()
+    {
+        return config.CreateMapper();
     }
 }

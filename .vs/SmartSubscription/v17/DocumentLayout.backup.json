@@ -3,20 +3,44 @@
   "WorkspaceRootPath": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\mapper\\mapperconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\services\\userroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\services\\userroleservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\views\\dashboard\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\views\\dashboard\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\dtos\\plandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\dtos\\plandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\dal\\ef\\tables\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\dtos\\subscriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\dtos\\subscriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\services\\planservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\services\\planservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\dtos\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\dtos\\roledto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\bll\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7EA2B558-A6F7-4D48-9C29-2FF7F974570C}|BLL\\BLL.csproj|solutionrelative:bll\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,63 +54,141 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Login.cshtml",
-              "RelativeDocumentMoniker": "API\\Views\\Auth\\Login.cshtml",
-              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Login.cshtml",
-              "RelativeToolTip": "API\\Views\\Auth\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-17T20:32:10.764Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MapperConfig.cs",
-              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Mapper\\MapperConfig.cs",
-              "RelativeDocumentMoniker": "BLL\\Mapper\\MapperConfig.cs",
-              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Mapper\\MapperConfig.cs*",
-              "RelativeToolTip": "BLL\\Mapper\\MapperConfig.cs*",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBcAAABEAAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-17T20:31:20.833Z",
+              "WhenOpened": "2026-05-17T21:57:52.502Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UserRoleService.cs",
-              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\UserRoleService.cs",
-              "RelativeDocumentMoniker": "BLL\\Services\\UserRoleService.cs",
-              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\UserRoleService.cs",
-              "RelativeToolTip": "BLL\\Services\\UserRoleService.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAYwB8AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-17T20:30:52.239Z",
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "API\\Views\\Auth\\Register.cshtml",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "API\\Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-17T21:56:35.632Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Analytics.cshtml",
-              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Dashboard\\Analytics.cshtml",
-              "RelativeDocumentMoniker": "API\\Views\\Dashboard\\Analytics.cshtml",
-              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Dashboard\\Analytics.cshtml",
-              "RelativeToolTip": "API\\Views\\Dashboard\\Analytics.cshtml",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAAAJAAAAAdAAAAAAAAAA==",
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "API\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "API\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-17T20:30:24.164Z",
+              "WhenOpened": "2026-05-17T21:56:24.909Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Plan.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Plan.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Plan.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Plan.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\Plan.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:52:54.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SubscriptionDTO.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\DTOs\\SubscriptionDTO.cs",
+              "RelativeDocumentMoniker": "BLL\\DTOs\\SubscriptionDTO.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\DTOs\\SubscriptionDTO.cs",
+              "RelativeToolTip": "BLL\\DTOs\\SubscriptionDTO.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:52:29.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RoleDTO.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\DTOs\\RoleDTO.cs",
+              "RelativeDocumentMoniker": "BLL\\DTOs\\RoleDTO.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\DTOs\\RoleDTO.cs",
+              "RelativeToolTip": "BLL\\DTOs\\RoleDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:51:51.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\PaymentService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\PaymentService.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\PaymentService.cs",
+              "RelativeToolTip": "BLL\\Services\\PaymentService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:49:33.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\UserService.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\UserService.cs",
+              "RelativeToolTip": "BLL\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:47:55.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PlanService.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\PlanService.cs",
+              "RelativeDocumentMoniker": "BLL\\Services\\PlanService.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\Services\\PlanService.cs",
+              "RelativeToolTip": "BLL\\Services\\PlanService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBcAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:46:57.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlanDTO.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\DTOs\\PlanDTO.cs",
+              "RelativeDocumentMoniker": "BLL\\DTOs\\PlanDTO.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\BLL\\DTOs\\PlanDTO.cs",
+              "RelativeToolTip": "BLL\\DTOs\\PlanDTO.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA1wBQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-17T21:45:39.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Program.cs",
               "RelativeDocumentMoniker": "API\\Program.cs",

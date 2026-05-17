@@ -50,11 +50,10 @@ namespace DAL.Repositories
 
         public bool IsSubscriptionActive(int userId)
         {
-            var user = GetActiveSubscription(userId);
-
-            if (user == null) return false;
-
-            return user.Status == "Active" && user.EndDate > DateTime.Now;
+            return db.Subcriptions.Any(x =>
+                x.UserId == userId &&
+                x.Status == "Active" &&
+                x.EndDate > DateTime.Now);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace BLL.Services
         public bool CreateRole(RoleDTO role)
         {
             var mapper = MapperConfig.GetMapper();
-            var entity = mapper.Map<Roles>(role);
+            var entity = mapper.Map<Role>(role);
             return data.GetRoleRepository().Create(entity);
         }
 

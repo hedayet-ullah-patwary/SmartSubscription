@@ -173,3 +173,5 @@ D:\AIUB\11th semester\Adv .net\SmartSubscription\API\bin\Debug\net8.0\BLL.dll
 D:\AIUB\11th semester\Adv .net\SmartSubscription\API\bin\Debug\net8.0\DAL.dll
 D:\AIUB\11th semester\Adv .net\SmartSubscription\API\bin\Debug\net8.0\BLL.pdb
 D:\AIUB\11th semester\Adv .net\SmartSubscription\API\bin\Debug\net8.0\DAL.pdb
+D:\AIUB\11th semester\Adv .net\SmartSubscription\API\obj\Debug\net8.0\API.sourcelink.json
+D:\AIUB\11th semester\Adv .net\SmartSubscription\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
