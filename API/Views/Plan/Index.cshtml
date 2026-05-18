@@ -1,0 +1,92 @@
+@model List<BLL.DTOs.PlanDTO>
+
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Plans";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var isAdmin = HttpContextAccessor.HttpContext.Session.GetString("UserRole") == "Admin";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">Plans</h2>
+            <p class="text-muted">Manage subscription plans</p>
+        </div>
+        @if (isAdmin)
+        {
+            <a asp-action="Create" class="btn btn-primary">+ Create Plan</a>
+        }
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="row">
+        @foreach (var plan in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow border-0 h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h4 class="fw-bold">@plan.Name</h4>
+                            @if (plan.IsActive == 1)
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Inactive</span>
+                            }
+                        </div>
+                        <h3 class="text-primary">$@plan.Price <small class="text-muted fs-6">/plan</small></h3>
+                        <p class="text-muted">@plan.Description</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-calendar-days me-1 text-muted"></i> @plan.DurationDays days</li>
+                            <li><i class="fa fa-bolt me-1 text-muted"></i> @plan.ApiLimit API calls</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        @if (isAdmin)
+                        {
+                            @if (plan.IsActive == 1)
+                            {
+                                <a asp-action="Deactivate" asp-route-id="@plan.Id"
+                                   class="btn btn-warning btn-sm me-1">Deactivate</a>
+                            }
+                            else
+                            {
+                                <a asp-action="Activate" asp-route-id="@plan.Id"
+                                   class="btn btn-success btn-sm me-1">Activate</a>
+                            }
+                        }
+                        else if (plan.IsActive == 1)
+                        {
+                            <!-- ✅ Now goes to Checkout page instead of directly subscribing -->
+                            <a asp-controller="Subscription" asp-action="Checkout"
+                               asp-route-planId="@plan.Id"
+                               class="btn btn-primary btn-sm w-100">
+                                <i class="fa fa-cart-shopping me-1"></i> Subscribe
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

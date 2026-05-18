@@ -66,7 +66,6 @@ public partial class SmartSubcriptionsContext : DbContext
 
         modelBuilder.Entity<Plan>(entity =>
         {
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Description).IsUnicode(false);
             entity.Property(e => e.IsActive).HasDefaultValue(1);
             entity.Property(e => e.Name)
@@ -79,7 +78,6 @@ public partial class SmartSubcriptionsContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK_Role");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -89,7 +87,6 @@ public partial class SmartSubcriptionsContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK_Subcription");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.EndDate).HasColumnType("datetime");
             entity.Property(e => e.StartDate)
                 .HasDefaultValueSql("(getdate())")
@@ -131,8 +128,6 @@ public partial class SmartSubcriptionsContext : DbContext
         modelBuilder.Entity<UserRole>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_UserRole");
-
-            entity.Property(e => e.Id).ValueGeneratedNever();
 
             entity.HasOne(d => d.Role).WithMany(p => p.UserRoles)
                 .HasForeignKey(d => d.RoleId)

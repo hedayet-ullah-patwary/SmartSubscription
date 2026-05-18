@@ -12,9 +12,9 @@ namespace BLL.DTOs
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int IsEmailVerified { get; set; }
-        public int IsActive { get; set; } 
-        public DateTime CreatedAt { get; set; }
+        public int IsEmailVerified { get; set; } = 0;
+        public int IsActive { get; set; } = 1;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
 
     }

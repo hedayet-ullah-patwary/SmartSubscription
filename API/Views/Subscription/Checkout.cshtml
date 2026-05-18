@@ -1,0 +1,174 @@
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var plan = ViewBag.Plan as BLL.DTOs.PlanDTO;
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <h2 class="fw-bold mb-1">Checkout</h2>
+            <p class="text-muted mb-4">Review your plan and complete payment</p>
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show">
+                    @ViewBag.Error
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            }
+
+            <div class="row g-4">
+
+                <!-- Plan summary card -->
+                <div class="col-md-5">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-header bg-primary text-white fw-semibold">
+                            Order Summary
+                        </div>
+                        <div class="card-body">
+                            <h4 class="fw-bold">@plan?.Name</h4>
+                            <p class="text-muted small mb-3">@plan?.Description</p>
+
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item px-0 d-flex justify-content-between">
+                                    <span class="text-muted">Duration</span>
+                                    <span class="fw-semibold">@plan?.DurationDays days</span>
+                                </li>
+                                <li class="list-group-item px-0 d-flex justify-content-between">
+                                    <span class="text-muted">API Limit</span>
+                                    <span class="fw-semibold">@plan?.ApiLimit calls</span>
+                                </li>
+                                <li class="list-group-item px-0 d-flex justify-content-between">
+                                    <span class="text-muted">Start Date</span>
+                                    <span class="fw-semibold">@DateTime.Now.ToString("dd MMM yyyy")</span>
+                                </li>
+                                <li class="list-group-item px-0 d-flex justify-content-between">
+                                    <span class="text-muted">End Date</span>
+                                    <span class="fw-semibold">@DateTime.Now.AddDays(plan?.DurationDays ?? 0).ToString("dd MMM yyyy")</span>
+                                </li>
+                            </ul>
+
+                            <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                <span class="fw-bold fs-5">Total</span>
+                                <span class="fw-bold fs-4 text-primary">$@plan?.Price</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment form -->
+                <div class="col-md-7">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-header bg-white fw-semibold border-bottom">
+                            Payment Details
+                        </div>
+                        <div class="card-body p-4">
+
+                            <form asp-action="Checkout" method="post">
+                                <input type="hidden" name="planId" value="@plan?.Id" />
+
+                                <!-- Payment method selection -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Payment Method</label>
+
+                                    <div class="row g-2 mt-1">
+                                        @foreach (var method in new[] {
+                                            ("CreditCard",  "fa-credit-card",   "Credit Card"),
+                                            ("DebitCard",   "fa-credit-card",   "Debit Card"),
+                                            ("PayPal",      "fa-paypal",        "PayPal"),
+                                            ("BankTransfer","fa-building-columns","Bank Transfer"),
+                                            ("MobileBanking","fa-mobile-screen","Mobile Banking")
+                                        })
+                                        {
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="paymentMethod"
+                                                       id="pm_@method.Item1" value="@method.Item1" required />
+                                                <label class="btn btn-outline-secondary w-100 text-start py-2 px-3"
+                                                       for="pm_@method.Item1">
+                                                    <i class="fa @method.Item2 me-2 text-primary"></i>
+                                                    @method.Item3
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+
+                                <!-- Card details (shown only for card methods via JS) -->
+                                <div id="cardDetails" class="d-none mb-3">
+                                    <div class="mb-3">
+                                        <label class="form-label small text-muted">Card Number</label>
+                                        <input type="text" class="form-control" placeholder="•••• •••• •••• ••••"
+                                               maxlength="19" id="cardNumber"
+                                               oninput="formatCard(this)" />
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label small text-muted">Expiry</label>
+                                            <input type="text" class="form-control" placeholder="MM / YY"
+                                                   maxlength="7" id="cardExpiry"
+                                                   oninput="formatExpiry(this)" />
+                                        </div>
+                                        <div class="col-6 mb-3">
+                                            <label class="form-label small text-muted">CVV</label>
+                                            <input type="password" class="form-control" placeholder="•••"
+                                                   maxlength="4" id="cardCvv" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label small text-muted">Cardholder Name</label>
+                                        <input type="text" class="form-control" placeholder="As on card" />
+                                    </div>
+                                </div>
+
+                                <!-- Note: card fields are UI only (demo) — only paymentMethod is submitted -->
+                                <div class="alert alert-info py-2 px-3 small mb-4">
+                                    <i class="fa fa-lock me-1"></i>
+                                    This is a demo checkout. No real payment is processed.
+                                </div>
+
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fa fa-check-circle me-2"></i>
+                                        Confirm &amp; Pay $@plan?.Price
+                                    </button>
+                                    <a asp-controller="Plan" asp-action="Index"
+                                       class="btn btn-outline-secondary">
+                                        Cancel
+                                    </a>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Show/hide card detail fields based on payment method
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const cardMethods = ['CreditCard', 'DebitCard'];
+            const show = cardMethods.includes(radio.value);
+            document.getElementById('cardDetails').classList.toggle('d-none', !show);
+        });
+    });
+
+    function formatCard(el) {
+        let v = el.value.replace(/\D/g, '').substring(0, 16);
+        el.value = v.match(/.{1,4}/g)?.join(' ') ?? v;
+    }
+
+    function formatExpiry(el) {
+        let v = el.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length >= 3) v = v.substring(0, 2) + ' / ' + v.substring(2);
+        el.value = v;
+    }
+</script>
+}

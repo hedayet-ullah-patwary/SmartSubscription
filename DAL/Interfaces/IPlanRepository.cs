@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL.Interfaces
 {
-    public interface IPlanRepository
+    public interface IPlanRepository : IRepository<Plan>
     {
         Plan GetByName(string name);
         bool ActivatePlan(int planId);

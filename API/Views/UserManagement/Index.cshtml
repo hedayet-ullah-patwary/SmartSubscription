@@ -1,0 +1,170 @@
+@model List<BLL.DTOs.UserDTO>
+
+@{
+    ViewData["Title"] = "User Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var allRoles  = ViewBag.AllRoles  as List<BLL.DTOs.RoleDTO>;
+    var userRoles = ViewBag.UserRoles as Dictionary<int, string>;
+}
+
+<div class="container-fluid mt-4 px-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="fw-bold mb-0">User Management</h2>
+            <p class="text-muted mb-0">@Model.Count user(s) found</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="fa fa-user-plus me-1"></i> Add User
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Search + Filter + Sort -->
+    <div class="card shadow-sm border-0 mb-3">
+        <div class="card-body py-3">
+            <form method="get" class="row g-2 align-items-end">
+                <div class="col-md-4">
+                    <label class="form-label small text-muted mb-1">Search</label>
+                    <input name="search" value="@ViewBag.Search" class="form-control form-control-sm"
+                           placeholder="Name or email…" />
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label small text-muted mb-1">Status</label>
+                    <select name="filterActive" class="form-select form-select-sm">
+                        <option value="-1" selected="@(ViewBag.FilterActive == -1)">All</option>
+                        <option value="1"  selected="@(ViewBag.FilterActive == 1)">Active</option>
+                        <option value="0"  selected="@(ViewBag.FilterActive == 0)">Inactive</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label small text-muted mb-1">Sort By</label>
+                    <select name="sortBy" class="form-select form-select-sm">
+                        <option value="name"    selected="@(ViewBag.SortBy == "name")">Name</option>
+                        <option value="email"   selected="@(ViewBag.SortBy == "email")">Email</option>
+                        <option value="active"  selected="@(ViewBag.SortBy == "active")">Status</option>
+                        <option value="created" selected="@(ViewBag.SortBy == "created")">Created</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-outline-primary btn-sm w-100">Apply</button>
+                </div>
+                <div class="col-md-2">
+                    <a asp-action="Index" class="btn btn-outline-secondary btn-sm w-100">Reset</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="p-4 text-muted">No users found.</div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                                <th style="min-width:280px">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in Model)
+                            {
+                                var currentRole = userRoles != null && userRoles.ContainsKey(user.Id) ? userRoles[user.Id] : "—";
+                                <tr>
+                                    <td class="text-muted small">@user.Id</td>
+                                    <td class="fw-semibold">@user.Name</td>
+                                    <td class="text-muted small">@user.Email</td>
+
+                                    <!-- Quick role change -->
+                                    <td>
+                                        <form asp-action="AssignRole" method="post" class="d-flex gap-1">
+                                            <input type="hidden" name="userId" value="@user.Id" />
+                                            <select name="roleId" class="form-select form-select-sm" style="max-width:110px">
+                                                @if (allRoles != null)
+                                                {
+                                                    @foreach (var r in allRoles)
+                                                    {
+                                                        <option value="@r.Id" selected="@(r.Name == currentRole)">@r.Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <button type="submit" class="btn btn-outline-primary btn-sm px-2"
+                                                    title="Save role">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+
+                                    <td>
+                                        @if (user.IsActive == 1)
+                                        {
+                                            <span class="badge bg-success-subtle text-success border border-success-subtle">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle">Inactive</span>
+                                        }
+                                    </td>
+
+                                    <td class="text-muted small">@user.CreatedAt.ToString("dd MMM yyyy")</td>
+
+                                    <td>
+                                        <div class="d-flex flex-wrap gap-1">
+                                            <a asp-action="Details" asp-route-id="@user.Id"
+                                               class="btn btn-outline-secondary btn-sm" title="Details">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a asp-action="Edit" asp-route-id="@user.Id"
+                                               class="btn btn-outline-warning btn-sm" title="Edit">
+                                                <i class="fa fa-pen"></i>
+                                            </a>
+                                            <a asp-action="ToggleActive" asp-route-id="@user.Id"
+                                               class="btn @(user.IsActive == 1 ? "btn-outline-secondary" : "btn-outline-success") btn-sm"
+                                               title="@(user.IsActive == 1 ? "Deactivate" : "Activate")">
+                                                <i class="fa @(user.IsActive == 1 ? "fa-user-slash" : "fa-user-check")"></i>
+                                            </a>
+                                            <form asp-action="Delete" method="post" style="display:inline"
+                                                  onsubmit="return confirm('Delete user @user.Name?')">
+                                                <input type="hidden" name="id" value="@user.Id" />
+                                                <button type="submit" class="btn btn-outline-danger btn-sm" title="Delete">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

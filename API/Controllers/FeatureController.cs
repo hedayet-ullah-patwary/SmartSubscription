@@ -1,4 +1,4 @@
-﻿using BLL.DTOs;
+using BLL.DTOs;
 using BLL.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,38 +13,61 @@ namespace API.Controllers
             this.service = service;
         }
 
-        public IActionResult Index()
+        private IActionResult AdminOnly()
         {
-            return View(service.GetAllFeatures());
+            var role = HttpContext.Session.GetString("UserRole");
+            return role == "Admin" ? null! : RedirectToAction("Login", "Auth");
         }
 
-        public IActionResult Create()
+        [HttpGet]
+        public IActionResult Index(string sortBy = "name")
         {
-            return View();
+            var guard = AdminOnly(); if (guard != null) return guard;
+            ViewBag.SortBy = sortBy;
+            return View(service.GetAllFeatures(sortBy));
         }
 
         [HttpPost]
         public IActionResult Create(FeatureDTO feature)
         {
+            var guard = AdminOnly(); if (guard != null) return guard;
+
+            if (!ModelState.IsValid) { ViewBag.Error = "Invalid input"; return RedirectToAction("Index"); }
+
             var result = service.CreateFeature(feature);
-
-            if (!result)
-            {
-                ViewBag.Error = "Feature creation failed";
-                return View(feature);
-            }
-
-            TempData["Success"] = "Feature created";
-
+            TempData[result ? "Success" : "Error"] = result ? "Feature created" : "Feature creation failed";
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var guard = AdminOnly(); if (guard != null) return guard;
+
+            var feature = service.GetById(id);
+            if (feature == null) { TempData["Error"] = "Feature not found."; return RedirectToAction("Index"); }
+            return View(feature);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(FeatureDTO feature)
+        {
+            var guard = AdminOnly(); if (guard != null) return guard;
+
+            if (!ModelState.IsValid) { ViewBag.Error = "Invalid input"; return View(feature); }
+
+            var result = service.UpdateFeature(feature);
+            TempData[result ? "Success" : "Error"] = result ? "Feature updated." : "Update failed.";
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
         public IActionResult Delete(int id)
         {
+            var guard = AdminOnly(); if (guard != null) return guard;
+
             service.DeleteFeature(id);
-
             TempData["Success"] = "Feature deleted";
-
             return RedirectToAction("Index");
         }
     }

@@ -1,0 +1,61 @@
+﻿@model List<BLL.DTOs.PaymentDTO>
+
+@{
+    ViewData["Title"] = "Payment History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+
+    <h2 class="fw-bold mb-1">Payment History</h2>
+    <p class="text-muted mb-4">All your transactions</p>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">No payment records found.</div>
+    }
+    else
+    {
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>Subscription ID</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model)
+                        {
+                            <tr>
+                                <td>@p.Id</td>
+                                <td>@p.SubscriptionId</td>
+                                <td class="text-success fw-bold">$@p.Amount</td>
+                                <td>@p.PaymentMethod</td>
+                                <td>
+                                    <span class="badge bg-info text-dark">@p.TransactionType</span>
+                                </td>
+                                <td>@p.PaymentDate.ToShortDateString()</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+</div>

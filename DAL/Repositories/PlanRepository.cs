@@ -14,6 +14,12 @@ namespace DAL.Repositories
         {
         }
 
+        public List<Plan> GetAllPlans()
+        {
+            var plans = GetAll();
+            return new List<Plan>(plans);
+        }
+
         public bool ActivatePlan(int planId)
         {
             var plan = Find(planId);

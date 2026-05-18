@@ -2,7 +2,6 @@
 using BLL.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace API.Controllers
 {
@@ -15,129 +14,86 @@ namespace API.Controllers
             this.service = service;
         }
 
-        // HOME PAGE
         [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        // LOGIN PAGE
-        [HttpGet("login")]
         public IActionResult Login()
         {
             return View(new LoginDTO());
         }
 
-        // LOGIN
-        [HttpPost("login")]
+        [HttpPost]
         public IActionResult Login(LoginDTO dto)
         {
-              // MODEL VALIDATION
-                if (!ModelState.IsValid)
-                {
-                    ViewBag.Error = "Invalid input data";
-                    return View(dto);
-                }
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "Invalid input data";
+                return View(dto);
+            }
 
-                var response = service.UserLogin(dto);
+            var response = service.UserLogin(dto);
 
+            if (response == null)
+            {
+                ViewBag.Error = "Invalid email or password";
+                return View(dto);
+            }
 
-                // LOGIN FAILED
-                if (response == null)
-                {
-                    ViewBag.Error = "Invalid email or password";
-                    return View(dto);
-                }
+            HttpContext.Session.SetInt32("UserId", response.Id);
+            HttpContext.Session.SetString("UserName", response.Name);
+            HttpContext.Session.SetString("UserEmail", response.Email);
+            HttpContext.Session.SetString("UserRole", response.Role ?? "User");
 
-                // STORE SESSION
-                HttpContext.Session.SetInt32("UserId", response.Id);
-                HttpContext.Session.SetString("UserName", response.Name);
-                HttpContext.Session.SetString("UserEmail", response.Email);
-                HttpContext.Session.SetString("UserRole", response.Role);
+            TempData["Success"] = "Login successful";
 
-                // SUCCESS MESSAGE
-                TempData["Success"] = "Login successful";
+            if (response.Role == "Admin")
+                return RedirectToAction("AdminDashboard", "Dashboard");
 
-                // ROLE BASED REDIRECTION
-                if (response.Role == "Admin")
-                    return RedirectToAction("AdminDashboard", "Dashboard");
+            if (response.Role == "User")
+                return RedirectToAction("UserDashboard", "Dashboard");
 
-
-                if (response.Role == "User")
-                    return RedirectToAction("UserDashboard", "Dashboard");
-
-                // DEFAULT REDIRECT
-                return RedirectToAction( "Index","Home");
-  
+            return RedirectToAction("Index", "Home");
         }
 
-        // REGISTER PAGE
-        [HttpGet("register")]
+        [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
-        // REGISTER USER
-        [HttpPost("register")]
-        public IActionResult Register(RegisterDTO model)
+        [HttpPost]
+        public IActionResult Register(UserDTO model) 
         {
-                // MODEL VALIDATION
-                if (!ModelState.IsValid)
-                {
-                    ViewBag.Error = "Invalid input data";
-                    return View(model);
-                }
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Error = "Invalid input data";
+                return View(model);
+            }
 
-                // REGISTER USER
-                var result = service.RegisterUser(model);
+            var result = service.RegisterUser(model);
 
-                // REGISTRATION FAILED
-                if (result == null)
-                {
-                    ViewBag.Error = "Registration failed";
-                    return View(model);
-                }
+            if (result == null)
+            {
+                ViewBag.Error = "Registration failed. Email may already be in use.";
+                return View(model);
+            }
 
-                // SUCCESS MESSAGE
-
-                TempData["Success"] = "Registration successful. Please login.";
-
-                // REDIRECT TO LOGIN
-
-                return RedirectToAction( "Login", "Auth");
-            
+            TempData["Success"] = "Registration successful. Please login.";
+            return RedirectToAction("Login", "Auth");
         }
 
-        // LOGOUT
         [HttpGet]
         public IActionResult Logout()
         {
-
-                HttpContext.Session.Clear();
-
-                TempData["Success"] = "Logout successful";
-
-                return RedirectToAction("Login", "Auth");
-         
+            HttpContext.Session.Clear();
+            TempData["Success"] = "Logout successful";
+            return RedirectToAction("Login", "Auth");
         }
 
-        // ACCESS DENIED
-        [HttpGet]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
-        // FORGOT PASSWORD PAGE
         [HttpGet]
         public IActionResult ForgotPassword()
         {
             return View();
         }
 
-        // RESET PASSWORD PAGE
         [HttpGet]
         public IActionResult ResetPassword()
         {

@@ -1,0 +1,158 @@
+@model List<BLL.DTOs.SubscriptionDTO>
+
+@{
+    ViewData["Title"] = "My Subscriptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // Payments keyed by SubscriptionId, passed from controller
+    var payments = ViewBag.Payments as Dictionary<int, BLL.DTOs.PaymentDTO>;
+    var plans    = ViewBag.Plans    as Dictionary<int, BLL.DTOs.PlanDTO>;
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="fw-bold mb-0">My Subscriptions</h2>
+            <p class="text-muted mb-0">Your subscription history and payment receipts</p>
+        </div>
+        <a asp-controller="Plan" asp-action="Index" class="btn btn-primary btn-sm">
+            <i class="fa fa-plus me-1"></i> Browse Plans
+        </a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">
+            You have no subscriptions yet.
+            <a asp-controller="Plan" asp-action="Index">Browse Plans →</a>
+        </div>
+    }
+    else
+    {
+        @foreach (var sub in Model.OrderByDescending(s => s.StartDate))
+        {
+            var plan    = plans    != null && plans.ContainsKey(sub.PlanId)    ? plans[sub.PlanId]        : null;
+            var payment = payments != null && payments.ContainsKey(sub.Id)     ? payments[sub.Id]         : null;
+
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center
+                             @(sub.Status == "Active" ? "bg-success-subtle" : "bg-light")">
+                    <div>
+                        <span class="fw-semibold">@(plan?.Name ?? $"Plan #{sub.PlanId}")</span>
+                        <span class="ms-2 badge @(sub.Status == "Active" ? "bg-success" : sub.Status == "Cancelled" ? "bg-danger" : "bg-secondary")">
+                            @sub.Status
+                        </span>
+                    </div>
+                    <small class="text-muted">Sub #@sub.Id</small>
+                </div>
+
+                <div class="card-body">
+                    <div class="row g-3">
+
+                        <!-- Subscription details -->
+                        <div class="col-md-6">
+                            <h6 class="text-muted fw-semibold mb-2 text-uppercase small">Subscription</h6>
+                            <table class="table table-sm table-borderless mb-0">
+                                <tr>
+                                    <td class="text-muted ps-0" style="width:130px">Plan</td>
+                                    <td class="fw-semibold">@(plan?.Name ?? $"#{sub.PlanId}")</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted ps-0">Start Date</td>
+                                    <td>@sub.StartDate.ToString("dd MMM yyyy")</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted ps-0">End Date</td>
+                                    <td>@sub.EndDate.ToString("dd MMM yyyy")</td>
+                                </tr>
+                                @if (plan != null)
+                                {
+                                    <tr>
+                                        <td class="text-muted ps-0">Duration</td>
+                                        <td>@plan.DurationDays days</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted ps-0">API Limit</td>
+                                        <td>@plan.ApiLimit calls</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+
+                        <!-- Payment receipt -->
+                        <div class="col-md-6">
+                            <h6 class="text-muted fw-semibold mb-2 text-uppercase small">Payment Receipt</h6>
+                            @if (payment != null)
+                            {
+                                <table class="table table-sm table-borderless mb-0">
+                                    <tr>
+                                        <td class="text-muted ps-0" style="width:130px">Amount</td>
+                                        <td class="fw-bold text-success fs-6">$@payment.Amount</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted ps-0">Method</td>
+                                        <td>
+                                            @{
+                                                var icon = payment.PaymentMethod switch {
+                                                    "CreditCard"    => "fa-credit-card",
+                                                    "DebitCard"     => "fa-credit-card",
+                                                    "PayPal"        => "fa-paypal",
+                                                    "BankTransfer"  => "fa-building-columns",
+                                                    "MobileBanking" => "fa-mobile-screen",
+                                                    _               => "fa-money-bill"
+                                                };
+                                            }
+                                            <i class="fa @icon me-1 text-primary"></i>
+                                            @payment.PaymentMethod
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted ps-0">Type</td>
+                                        <td>@payment.TransactionType</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted ps-0">Paid On</td>
+                                        <td>@payment.PaymentDate.ToString("dd MMM yyyy, hh:mm tt")</td>
+                                    </tr>
+                                </table>
+                            }
+                            else
+                            {
+                                <p class="text-muted small mt-2">No payment record found.</p>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+
+                @if (sub.Status == "Active")
+                {
+                    <div class="card-footer bg-white border-0 d-flex gap-2">
+                        <a asp-action="Cancel" asp-route-id="@sub.Id"
+                           class="btn btn-outline-danger btn-sm"
+                           onclick="return confirm('Cancel this subscription?')">
+                            <i class="fa fa-xmark me-1"></i> Cancel Subscription
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+    }
+
+</div>

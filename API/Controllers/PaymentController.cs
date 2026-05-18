@@ -13,15 +13,24 @@ namespace API.Controllers
             this.service = service;
         }
 
-        public IActionResult Index(int userId)
+        [HttpGet]
+        public IActionResult Index()
         {
-            var payments = service.GetUserPayments(userId);
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null) return RedirectToAction("Login", "Auth");
+
+            var payments = service.GetUserPayments(userId.Value);
             return View(payments);
         }
 
         [HttpPost]
         public IActionResult Create(PaymentDTO payment)
         {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null) return RedirectToAction("Login", "Auth");
+
+            payment.UserId = userId.Value;
+
             var result = service.CreatePayment(payment);
 
             if (!result)
@@ -31,14 +40,7 @@ namespace API.Controllers
             }
 
             TempData["Success"] = "Payment successful";
-
-            return RedirectToAction("Index", new { userId = payment.UserId });
-        }
-
-        public IActionResult FailedPayments()
-        {
-            var data = service.GetFailedPayments();
-            return View(data);
+            return RedirectToAction("Index");
         }
     }
 }

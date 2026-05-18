@@ -10,12 +10,10 @@ namespace BLL.Services
     public class UserService
     {
         DataAccessFactory factory;
-        IMapper mapper;
 
-        public UserService(DataAccessFactory factory, IMapper mapper)
+        public UserService(DataAccessFactory factory)
         {
             this.factory = factory;
-            this.mapper = mapper;
         }
 
         public UserResponseDTO UserLogin(LoginDTO dto)
@@ -25,6 +23,7 @@ namespace BLL.Services
             if (user == null)
                 return null;
 
+            var mapper = MapperConfig.GetMapper();
             var response = mapper.Map<UserResponseDTO>(user);
 
             response.Role = factory.GetUserRoleRepository().GetRoleNameByUserId(user.Id);
@@ -32,14 +31,19 @@ namespace BLL.Services
             return response;
         }
 
-        public UserDTO RegisterUser(RegisterDTO dto)
+        public UserDTO RegisterUser(UserDTO dto)
         {
+            var mapper = MapperConfig.GetMapper();
             var user = mapper.Map<User>(dto);
 
             var exists = factory.GetUserRepository().GetByEmail(user.Email);
 
             if (exists != null)
                 return null;
+
+            user.CreatedAt = DateTime.Now;
+            user.IsActive = 1;
+            user.IsEmailVerified = 0;
 
             var result = factory.GetUserRepository().Create(user);
 
@@ -54,7 +58,21 @@ namespace BLL.Services
         {
             var data = factory.GetUserRepository().Find(id);
 
+            var mapper = MapperConfig.GetMapper();
             return mapper.Map<UserDTO>(data);
+        }
+
+        // UserService.cs এ যোগ করো
+        public List<UserDTO> GetAllUsers()
+        {
+            var users = factory.GetUserRepository().GetAll();
+            var mapper = MapperConfig.GetMapper();
+            return mapper.Map<List<UserDTO>>(users);
+        }
+
+        public User GetUserEntityById(int id)
+        {
+            return factory.GetUserRepository().Find(id);
         }
 
         public bool UpdateUser(UserDTO dto)
@@ -82,12 +100,16 @@ namespace BLL.Services
         public List<PaymentDTO> GetUserPayments(int userId)
         {
             var data = factory.GetPaymentRepository().GetUserPayments(userId);
+
+            var mapper = MapperConfig.GetMapper();
             return mapper.Map<List<PaymentDTO>>(data);
         }
 
         public List<SubscriptionDTO> GetUserSubscriptions(int userId)
         {
             var data = factory.GetSubscriptionRepository().GetUserSubscriptions(userId);
+
+            var mapper = MapperConfig.GetMapper();
             return mapper.Map<List<SubscriptionDTO>>(data);
         }
 
