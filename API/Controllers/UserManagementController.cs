@@ -139,7 +139,7 @@ namespace API.Controllers
                 return View(model);
             }
 
-            var result = userService.UpdateUser(model);
+            var result = userService.UpdateUserAdmin(model);
             if (!result)
             {
                 ViewBag.Error = "Update failed.";
@@ -181,10 +181,10 @@ namespace API.Controllers
             var user = userService.GetUserById(id);
             if (user == null) { TempData["Error"] = "User not found."; return RedirectToAction("Index"); }
 
-            user.IsActive = user.IsActive == 1 ? 0 : 1;
-            userService.UpdateUser(user);
+            var nextStatus = user.IsActive == 1 ? 0 : 1;
+            userService.SetUserActive(user.Id, nextStatus);
 
-            TempData["Success"] = user.IsActive == 1 ? "User activated." : "User deactivated.";
+            TempData["Success"] = nextStatus == 1 ? "User activated." : "User deactivated.";
             return RedirectToAction("Index");
         }
 

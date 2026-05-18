@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\dal\\ef\\tables\\subcription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\subcription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\dal\\ef\\tables\\feature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\feature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\dal\\ef\\tables\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D08086A-B639-4A17-B877-7530CE3F520D}|DAL\\DAL.csproj|solutionrelative:dal\\ef\\tables\\plan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|d:\\aiub\\11th semester\\adv .net\\smartsubscription\\api\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{16A4E40B-99DA-4231-99DE-57BBEDBA868F}|API\\API.csproj|solutionrelative:api\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,11 +34,50 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Subcription.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Subcription.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Subcription.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Subcription.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\Subcription.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T17:17:38.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Plan.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Plan.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Plan.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Plan.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\Plan.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T17:17:24.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Feature.cs",
+              "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Feature.cs",
+              "RelativeDocumentMoniker": "DAL\\EF\\Tables\\Feature.cs",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\EF\\Tables\\Feature.cs",
+              "RelativeToolTip": "DAL\\EF\\Tables\\Feature.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-18T17:17:21.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\appsettings.json",
               "RelativeDocumentMoniker": "API\\appsettings.json",
@@ -34,25 +85,24 @@
               "RelativeToolTip": "API\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-18T14:07:29.058Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-18T14:07:29.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "UserManagementController.cs",
               "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Controllers\\UserManagementController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\UserManagementController.cs",
               "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Controllers\\UserManagementController.cs",
               "RelativeToolTip": "API\\Controllers\\UserManagementController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBEAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBEAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-18T12:19:33.094Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\API\\Program.cs",
               "RelativeDocumentMoniker": "API\\Program.cs",
@@ -60,8 +110,7 @@
               "RelativeToolTip": "API\\Program.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-17T14:49:31.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-17T14:49:31.075Z"
             }
           ]
         }

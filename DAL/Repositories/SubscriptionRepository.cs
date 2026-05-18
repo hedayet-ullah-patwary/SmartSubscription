@@ -55,5 +55,15 @@ namespace DAL.Repositories
                 x.Status == "Active" &&
                 x.EndDate > DateTime.Now);
         }
+
+        public bool HasSubscriptionsForPlan(int planId)
+        {
+            return db.Subcriptions.Any(x => x.PlanId == planId);
+        }
+
+        public bool HasPaymentsForSubscription(int subscriptionId)
+        {
+            return db.Payments.Any(x => x.SubcriptionId == subscriptionId);
+        }
     }
 }

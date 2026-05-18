@@ -11,6 +11,10 @@
     {
         <div class="alert alert-success">@TempData["Success"]</div>
     }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
 
     <div class="card shadow border-0 mb-4">
         <div class="card-body">
@@ -72,3 +76,85 @@
     </div>
 
 </div>
+
+@if (ViewBag.ShowEmailVerify == true)
+{
+    <div class="modal fade" id="emailVerifyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Email Verification</h5>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-2">Use this verification code to activate your account:</p>
+                    <div class="alert alert-primary text-center fw-bold fs-4 mb-3">
+                        @ViewBag.EmailVerifyCode
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Code expires in</span>
+                        <span id="verifyCountdown" class="fw-semibold">00:30</span>
+                    </div>
+
+                    <form asp-action="VerifyEmailCode" method="post" class="mb-3">
+                        <div class="mb-3">
+                            <label class="form-label">Enter Code</label>
+                            <input name="code" class="form-control" placeholder="6-digit code" />
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Verify Email</button>
+                        </div>
+                    </form>
+
+                    <form asp-action="ResendEmailCode" method="post" class="d-grid">
+                        <button id="resendCodeBtn" type="submit" class="btn btn-outline-secondary" disabled>
+                            Resend Code
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var modalEl = document.getElementById("emailVerifyModal");
+            if (modalEl) {
+                var modal = new bootstrap.Modal(modalEl, { backdrop: "static", keyboard: false });
+                modal.show();
+            }
+
+            var expiryValue = "@ViewBag.EmailVerifyExpiry";
+            var expiry = parseInt(expiryValue, 10) * 1000;
+            var countdownEl = document.getElementById("verifyCountdown");
+            var resendBtn = document.getElementById("resendCodeBtn");
+
+            function pad(num) {
+                return num.toString().padStart(2, "0");
+            }
+
+            function tick() {
+                var now = Date.now();
+                var remainingMs = expiry - now;
+                if (remainingMs <= 0) {
+                    countdownEl.textContent = "00:00";
+                    resendBtn.disabled = false;
+                    return;
+                }
+
+                var totalSeconds = Math.floor(remainingMs / 1000);
+                var minutes = Math.floor(totalSeconds / 60);
+                var seconds = totalSeconds % 60;
+                countdownEl.textContent = pad(minutes) + ":" + pad(seconds);
+                resendBtn.disabled = true;
+                setTimeout(tick, 1000);
+            }
+
+            if (!isNaN(expiry)) {
+                tick();
+            } else {
+                resendBtn.disabled = false;
+            }
+        });
+    </script>
+}

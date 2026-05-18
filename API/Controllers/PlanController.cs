@@ -77,7 +77,17 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+            {
+                return guard;
+            }
+
+            if (service.HasSubscriptions(id))
+            {
+                TempData["Error"] = "Cannot delete plan with subscriptions. Deactivate it instead.";
+                return RedirectToAction("Index");
+            }
 
             var result = service.DeletePlan(id);
             TempData[result ? "Success" : "Error"] = result ? "Plan deleted." : "Delete failed.";
@@ -87,7 +97,11 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Activate(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+            {
+                return guard;
+            }
             service.ActivatePlan(id);
             TempData["Success"] = "Plan activated";
             return RedirectToAction("Index");
@@ -96,7 +110,11 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Deactivate(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+            {
+                return guard;
+            }
             service.DeactivatePlan(id);
             TempData["Success"] = "Plan deactivated";
             return RedirectToAction("Index");

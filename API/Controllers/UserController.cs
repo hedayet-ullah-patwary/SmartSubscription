@@ -88,7 +88,7 @@ namespace API.Controllers
                 return View(model);
             }
 
-            var result = service.UpdateUser(model);
+            var result = service.UpdateUserProfile(model);
 
             if (!result)
             {

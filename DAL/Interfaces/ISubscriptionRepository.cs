@@ -10,6 +10,8 @@ namespace DAL.Interfaces
         Subcription GetActiveSubscription(int userId);
         List<Subcription> GetUserSubscriptions(int userId);
         bool IsSubscriptionActive(int userId);
+        bool HasSubscriptionsForPlan(int planId);
+        bool HasPaymentsForSubscription(int subscriptionId);
         bool ExtendSubscription(int subscriptionId, int days);
         bool CancelSubscription(int subscriptionId);
     }

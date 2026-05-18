@@ -1,0 +1,80 @@
+@model BLL.DTOs.SubscriptionDTO
+
+@{
+    ViewData["Title"] = "Edit Subscription";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var plans = ViewBag.Plans as List<BLL.DTOs.PlanDTO>;
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow border-0">
+                <div class="card-body p-4">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-bold mb-0">Edit Subscription</h3>
+                        <a asp-action="AdminIndex" class="btn btn-outline-secondary btn-sm">
+                            <i class="fa fa-arrow-left me-1"></i> Back
+                        </a>
+                    </div>
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">@ViewBag.Error</div>
+                    }
+
+                    <form asp-action="AdminEdit" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="UserId" />
+
+                        <div class="mb-3">
+                            <label class="form-label">Plan</label>
+                            <select asp-for="PlanId" class="form-select">
+                                @if (plans != null)
+                                {
+                                    @foreach (var plan in plans)
+                                    {
+                                        <option value="@plan.Id">@plan.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select asp-for="Status" class="form-select">
+                                <option value="Active">Active</option>
+                                <option value="Cancelled">Cancelled</option>
+                                <option value="Expired">Expired</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input asp-for="StartDate" type="date" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">End Date</label>
+                            <input asp-for="EndDate" type="date" class="form-control" />
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="recalcEndDate" name="recalcEndDate" />
+                            <label class="form-check-label" for="recalcEndDate">
+                                Recalculate end date based on selected plan
+                            </label>
+                        </div>
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-warning">Save Changes</button>
+                            <a asp-action="AdminIndex" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

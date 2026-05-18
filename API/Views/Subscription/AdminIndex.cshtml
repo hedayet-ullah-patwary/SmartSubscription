@@ -1,0 +1,93 @@
+@model List<BLL.DTOs.SubscriptionDTO>
+
+@{
+    ViewData["Title"] = "Manage Subscriptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var plans = ViewBag.Plans as Dictionary<int, BLL.DTOs.PlanDTO>;
+    var users = ViewBag.Users as Dictionary<int, BLL.DTOs.UserDTO>;
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h2 class="fw-bold mb-0">Manage Subscriptions</h2>
+            <p class="text-muted mb-0">Admin control for user subscriptions</p>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            @TempData["Error"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            @if (Model == null || !Model.Any())
+            {
+                <div class="p-4 text-muted">No subscriptions found.</div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>User</th>
+                                <th>Plan</th>
+                                <th>Status</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th style="min-width:200px">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var sub in Model.OrderByDescending(s => s.StartDate))
+                            {
+                                var plan = plans != null && plans.ContainsKey(sub.PlanId) ? plans[sub.PlanId] : null;
+                                var user = users != null && users.ContainsKey(sub.UserId) ? users[sub.UserId] : null;
+                                <tr>
+                                    <td class="text-muted small">@sub.Id</td>
+                                    <td>
+                                        <div class="fw-semibold">@(user?.Name ?? $"User #{sub.UserId}")</div>
+                                        <div class="text-muted small">@(user?.Email ?? "")</div>
+                                    </td>
+                                    <td>@(plan?.Name ?? $"Plan #{sub.PlanId}")</td>
+                                    <td>
+                                        <span class="badge @(sub.Status == "Active" ? "bg-success" : sub.Status == "Cancelled" ? "bg-danger" : "bg-secondary")">
+                                            @sub.Status
+                                        </span>
+                                    </td>
+                                    <td class="text-muted small">@sub.StartDate.ToString("dd MMM yyyy")</td>
+                                    <td class="text-muted small">@sub.EndDate.ToString("dd MMM yyyy")</td>
+                                    <td>
+                                        <div class="d-flex flex-wrap gap-1">
+                                            <a asp-action="AdminEdit" asp-route-id="@sub.Id"
+                                               class="btn btn-outline-warning btn-sm">Edit</a>
+                                            <form asp-action="AdminDelete" method="post" class="d-inline"
+                                                  onsubmit="return confirm('Delete subscription #@sub.Id?')">
+                                                <input type="hidden" name="id" value="@sub.Id" />
+                                                <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

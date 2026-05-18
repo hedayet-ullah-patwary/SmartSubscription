@@ -78,6 +78,11 @@ namespace BLL.Services
             return data.GetRepository<Plan>().Delete(id);
         }
 
+        public bool HasSubscriptions(int planId)
+        {
+            return data.GetSubscriptionRepository().HasSubscriptionsForPlan(planId);
+        }
+
         // ─── Activate / Deactivate ────────────────────────────────────
         public bool ActivatePlan(int id)
         {

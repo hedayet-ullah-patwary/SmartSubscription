@@ -36,7 +36,8 @@ namespace DAL.Repositories
 
         public User UserLogin(string email, string password)
         {
-            return db.Users.FirstOrDefault(x => x.Email == email && x.Password == password);
+            return db.Users.FirstOrDefault(x =>
+                x.Email == email && x.Password == password && x.IsActive == 1);
         }
 
         public bool VerifyEmail(int userId)

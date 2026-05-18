@@ -62,6 +62,13 @@ namespace BLL.Services
             return mapper.Map<UserDTO>(data);
         }
 
+        public UserDTO GetUserByEmail(string email)
+        {
+            var data = factory.GetUserRepository().GetByEmail(email);
+            var mapper = MapperConfig.GetMapper();
+            return mapper.Map<UserDTO>(data);
+        }
+
         // UserService.cs এ যোগ করো
         public List<UserDTO> GetAllUsers()
         {
@@ -75,7 +82,7 @@ namespace BLL.Services
             return factory.GetUserRepository().Find(id);
         }
 
-        public bool UpdateUser(UserDTO dto)
+        public bool UpdateUserProfile(UserDTO dto)
         {
             var user = factory.GetUserRepository().Find(dto.Id);
 
@@ -87,9 +94,51 @@ namespace BLL.Services
 
             if (!string.IsNullOrEmpty(dto.Password))
                 user.Password = dto.Password;
-            
 
             return factory.GetUserRepository().Update(user);
+        }
+
+        public bool UpdateUserAdmin(UserDTO dto)
+        {
+            var user = factory.GetUserRepository().Find(dto.Id);
+
+            if (user == null)
+                return false;
+
+            user.Name = dto.Name;
+            user.Email = dto.Email;
+            user.IsActive = dto.IsActive;
+            user.IsEmailVerified = dto.IsEmailVerified;
+
+            if (!string.IsNullOrEmpty(dto.Password))
+                user.Password = dto.Password;
+
+            return factory.GetUserRepository().Update(user);
+        }
+
+        public bool SetUserActive(int userId, int isActive)
+        {
+            var user = factory.GetUserRepository().Find(userId);
+            if (user == null)
+                return false;
+
+            user.IsActive = isActive;
+            return factory.GetUserRepository().Update(user);
+        }
+
+        public bool UpdatePassword(int userId, string newPassword)
+        {
+            var user = factory.GetUserRepository().Find(userId);
+            if (user == null)
+                return false;
+
+            user.Password = newPassword;
+            return factory.GetUserRepository().Update(user);
+        }
+
+        public bool VerifyEmail(int userId)
+        {
+            return factory.GetUserRepository().VerifyEmail(userId);
         }
 
         public bool DeleteUser(int id)

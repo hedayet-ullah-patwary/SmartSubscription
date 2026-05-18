@@ -63,6 +63,15 @@
                     <div class="card-footer bg-white border-0">
                         @if (isAdmin)
                         {
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                <a asp-action="Edit" asp-route-id="@plan.Id"
+                                   class="btn btn-outline-warning btn-sm">Edit</a>
+                                <form asp-action="Delete" method="post" class="d-inline"
+                                      onsubmit="return confirm('Delete plan @plan.Name?')">
+                                    <input type="hidden" name="id" value="@plan.Id" />
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
                             @if (plan.IsActive == 1)
                             {
                                 <a asp-action="Deactivate" asp-route-id="@plan.Id"

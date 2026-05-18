@@ -29,6 +29,13 @@ namespace BLL.Services
             return mapper.Map<List<SubscriptionDTO>>(subs);
         }
 
+        public SubscriptionDTO GetById(int id)
+        {
+            var mapper = MapperConfig.GetMapper();
+            var sub = data.GetRepository<Subcription>().Find(id);
+            return mapper.Map<SubscriptionDTO>(sub);
+        }
+
         public SubscriptionDTO GetActiveSubscription(int userId)
         {
             var mapper = MapperConfig.GetMapper();
@@ -41,6 +48,18 @@ namespace BLL.Services
             var mapper = MapperConfig.GetMapper();
             var entity = mapper.Map<Subcription>(sub);
             return data.GetRepository<Subcription>().Create(entity);
+        }
+
+        public bool UpdateSubscription(SubscriptionDTO sub)
+        {
+            var mapper = MapperConfig.GetMapper();
+            var entity = mapper.Map<Subcription>(sub);
+            return data.GetRepository<Subcription>().Update(entity);
+        }
+
+        public bool DeleteSubscription(int id)
+        {
+            return data.GetRepository<Subcription>().Delete(id);
         }
 
         /// <summary>
@@ -90,6 +109,11 @@ namespace BLL.Services
         public bool IsSubscriptionActive(int userId)
         {
             return data.GetSubscriptionRepository().IsSubscriptionActive(userId);
+        }
+
+        public bool HasPaymentsForSubscription(int subscriptionId)
+        {
+            return data.GetSubscriptionRepository().HasPaymentsForSubscription(subscriptionId);
         }
     }
 }
