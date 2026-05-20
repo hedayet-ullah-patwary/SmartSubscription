@@ -18,18 +18,18 @@ namespace API.Controllers
             this.userRoleService = userRoleService;
         }
 
-        // ─── Guard helper ─────────────────────────────────────────────
         private IActionResult AdminOnly()
         {
             var role = HttpContext.Session.GetString("UserRole");
             return role == "Admin" ? null! : RedirectToAction("Login", "Auth");
         }
 
-        // ─── INDEX  – list with sort + search ─────────────────────────
         [HttpGet]
         public IActionResult Index(string sortBy = "name", string search = "", int filterActive = -1)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly();
+            if (guard != null)
+                return guard;
 
             var users = userService.GetAllUsers();
 
@@ -66,20 +66,22 @@ namespace API.Controllers
             return View(users);
         }
 
-        // ─── CREATE GET ────────────────────────────────────────────────
         [HttpGet]
         public IActionResult Create()
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly();
+            if (guard != null) 
+                return guard;
             ViewBag.Roles = new SelectList(roleService.GetAllRoles(), "Id", "Name");
             return View(new UserDTO());
         }
 
-        // ─── CREATE POST ───────────────────────────────────────────────
         [HttpPost]
         public IActionResult Create(UserDTO model, int roleId)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly();
+            if (guard != null)
+                return guard;
 
             if (!ModelState.IsValid)
             {
@@ -99,7 +101,7 @@ namespace API.Controllers
             // assign selected role
             if (roleId > 0)
             {
-                var newUser = userService.GetAllUsers().FirstOrDefault(u => u.Email == model.Email);
+                var newUser = userService.GetUserByEmail(model.Email);
                 if (newUser != null)
                     userRoleService.AssignRole(newUser.Id, roleId);
             }
@@ -108,14 +110,19 @@ namespace API.Controllers
             return RedirectToAction("Index");
         }
 
-        // ─── EDIT GET ──────────────────────────────────────────────────
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             var user = userService.GetUserById(id);
-            if (user == null) { TempData["Error"] = "User not found."; return RedirectToAction("Index"); }
+            if (user == null)
+            { 
+                TempData["Error"] = "User not found."; 
+                return RedirectToAction("Index");
+            }
 
             var currentRoleName = userRoleService.GetRoleNameByUserId(id);
             var allRoles        = roleService.GetAllRoles();
@@ -126,11 +133,12 @@ namespace API.Controllers
             return View(user);
         }
 
-        // ─── EDIT POST ─────────────────────────────────────────────────
         [HttpPost]
         public IActionResult Edit(UserDTO model, int roleId)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             if (!ModelState.IsValid)
             {
@@ -161,25 +169,32 @@ namespace API.Controllers
             return RedirectToAction("Index");
         }
 
-        // ─── DELETE ────────────────────────────────────────────────────
         [HttpPost]
         public IActionResult Delete(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            
+            if (guard != null) 
+                return guard;
 
             var result = userService.DeleteUser(id);
             TempData[result ? "Success" : "Error"] = result ? "User deleted." : "Delete failed.";
             return RedirectToAction("Index");
         }
 
-        // ─── TOGGLE ACTIVE / DEACTIVATE ───────────────────────────────
         [HttpGet]
         public IActionResult ToggleActive(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             var user = userService.GetUserById(id);
-            if (user == null) { TempData["Error"] = "User not found."; return RedirectToAction("Index"); }
+            if (user == null)
+            { 
+                TempData["Error"] = "User not found.";
+                return RedirectToAction("Index");
+            }
 
             var nextStatus = user.IsActive == 1 ? 0 : 1;
             userService.SetUserActive(user.Id, nextStatus);
@@ -188,11 +203,13 @@ namespace API.Controllers
             return RedirectToAction("Index");
         }
 
-        // ─── ASSIGN ROLE (quick inline from list) ─────────────────────
+        //ASSIGN ROLE 
         [HttpPost]
         public IActionResult AssignRole(int userId, int roleId)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly();
+            if (guard != null) 
+                return guard;
 
             // remove existing
             var existing = userRoleService.GetRolesByUser(userId);
@@ -204,14 +221,19 @@ namespace API.Controllers
             return RedirectToAction("Index");
         }
 
-        // ─── DETAILS ──────────────────────────────────────────────────
         [HttpGet]
         public IActionResult Details(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly();
+            if (guard != null) 
+                return guard;
 
             var user = userService.GetUserById(id);
-            if (user == null) { TempData["Error"] = "User not found."; return RedirectToAction("Index"); }
+            if (user == null) 
+            {
+                TempData["Error"] = "User not found."; 
+                return RedirectToAction("Index");
+            }
 
             ViewBag.Role          = userRoleService.GetRoleNameByUserId(id);
             ViewBag.Subscriptions = userService.GetUserSubscriptions(id);

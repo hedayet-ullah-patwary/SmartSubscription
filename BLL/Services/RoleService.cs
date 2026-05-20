@@ -15,7 +15,6 @@ namespace BLL.Services
             this.data = data;
         }
 
-        // ─── Get All (with optional sort) ─────────────────────────────
         public List<RoleDTO> GetAllRoles(string sortBy = "name")
         {
             var mapper = MapperConfig.GetMapper();
@@ -30,7 +29,6 @@ namespace BLL.Services
             return mapper.Map<List<RoleDTO>>(roles);
         }
 
-        // ─── Get by ID ────────────────────────────────────────────────
         public RoleDTO GetById(int id)
         {
             var mapper = MapperConfig.GetMapper();
@@ -38,7 +36,6 @@ namespace BLL.Services
             return mapper.Map<RoleDTO>(role);
         }
 
-        // ─── Get by Name ──────────────────────────────────────────────
         public RoleDTO GetByName(string name)
         {
             var mapper = MapperConfig.GetMapper();
@@ -46,7 +43,7 @@ namespace BLL.Services
             return mapper.Map<RoleDTO>(role);
         }
 
-        // ─── Create ───────────────────────────────────────────────────
+
         public bool CreateRole(RoleDTO role)
         {
             if (role == null || string.IsNullOrWhiteSpace(role.Name))
@@ -62,25 +59,25 @@ namespace BLL.Services
             return data.GetRoleRepository().Create(entity);
         }
 
-        // ─── Update ───────────────────────────────────────────────────
+
         public bool UpdateRole(RoleDTO role)
         {
-            if (role == null) return false;
+            if (role == null) 
+                return false;
 
             var existing = data.GetRoleRepository().Find(role.Id);
-            if (existing == null) return false;
+            if (existing == null)
+                return false;
 
             existing.Name = role.Name;
             return data.GetRoleRepository().Update(existing);
         }
 
-        // ─── Delete ───────────────────────────────────────────────────
         public bool DeleteRole(int id)
         {
             return data.GetRoleRepository().Delete(id);
         }
 
-        // ─── Role exists ──────────────────────────────────────────────
         public bool RoleExists(string name)
         {
             return data.GetRoleRepository().GetByName(name) != null;

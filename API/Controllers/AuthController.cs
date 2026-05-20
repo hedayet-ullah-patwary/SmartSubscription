@@ -103,11 +103,11 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            return View(new RegisterDTO());
         }
 
         [HttpPost]
-        public IActionResult Register(RegisterDTO model) 
+        public IActionResult Register(UserDTO model) 
         {
             if (!ModelState.IsValid)
             {
@@ -115,14 +115,7 @@ namespace API.Controllers
                 return View(model);
             }
 
-            var userDto = new UserDTO
-            {
-                Name = model.Name,
-                Email = model.Email,
-                Password = model.Password
-            };
-
-            var result = service.RegisterUser(userDto);
+            var result = service.RegisterUser(model);
 
             if (result == null)
             {

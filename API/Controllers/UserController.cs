@@ -20,8 +20,9 @@ namespace API.Controllers
             var userId = HttpContext.Session.GetInt32("UserId");
 
             if (userId == null)
-
+            {
                 return RedirectToAction("Login", "Auth");
+            }
 
             var user = service.GetUserById(userId.Value);
 
@@ -68,9 +69,6 @@ namespace API.Controllers
                 TempData["Error"] = "User not found";
                 return RedirectToAction("UserDashboard", "User");
             }
-
-
-
             return View(new UserDTO());
         }
 
@@ -121,7 +119,6 @@ namespace API.Controllers
 
             if (userId == null)
                 return RedirectToAction("Login", "Auth");
-
 
             var payments = service.GetUserPayments(userId.Value);
 

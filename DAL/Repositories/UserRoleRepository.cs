@@ -19,11 +19,11 @@ namespace DAL.Repositories
         {
             var userExists = db.Users.Any(x => x.Id == userId);
             if (!userExists)
-                return false; // User does not exist
+                return false; 
 
             var roleExists = db.Roles.Any(x => x.Id == roleId);
             if (!roleExists)
-                return false; // Role does not exist
+                return false; 
 
             var userRole = new UserRole()
             {
@@ -63,7 +63,6 @@ namespace DAL.Repositories
 
             if (userRole == null)
             {
-               // Console.WriteLine("RemoveRole Failed: Role assignment not found");
                 return false;
             }
 

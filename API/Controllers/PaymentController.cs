@@ -17,7 +17,8 @@ namespace API.Controllers
         public IActionResult Index()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null) return RedirectToAction("Login", "Auth");
+            if (userId == null) 
+                return RedirectToAction("Login", "Auth");
 
             var payments = service.GetUserPayments(userId.Value);
             return View(payments);
@@ -27,7 +28,8 @@ namespace API.Controllers
         public IActionResult Create(PaymentDTO payment)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null) return RedirectToAction("Login", "Auth");
+            if (userId == null) 
+                return RedirectToAction("Login", "Auth");
 
             payment.UserId = userId.Value;
 

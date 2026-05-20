@@ -62,24 +62,22 @@ namespace BLL.Services
             return data.GetRepository<Subcription>().Delete(id);
         }
 
-        /// <summary>
-        /// Creates a subscription AND its payment record in one call.
-        /// Returns the new subscription Id on success, -1 on failure.
-        /// </summary>
         public int CreateSubscriptionWithPayment(SubscriptionDTO sub, PaymentDTO payment)
         {
             var mapper = MapperConfig.GetMapper();
 
-            // 1. Create subscription
+            //  Create subscription
             var subEntity = mapper.Map<Subcription>(sub);
             bool subCreated = data.GetRepository<Subcription>().Create(subEntity);
-            if (!subCreated) return -1;
+            if (!subCreated) 
+                return -1;
 
-            // 2. Fetch the newly saved subscription to get its Id
+            // Fetch the newly saved subscription to get its Id
             var saved = data.GetSubscriptionRepository().GetActiveSubscription(sub.UserId);
-            if (saved == null) return -1;
+            if (saved == null) 
+                return -1;
 
-            // 3. Build and save payment linked to this subscription
+            // Build and save payment linked to this subscription
             var payEntity = new Payment
             {
                 UserId         = sub.UserId,
@@ -91,7 +89,8 @@ namespace BLL.Services
             };
 
             bool payCreated = data.GetRepository<Payment>().Create(payEntity);
-            if (!payCreated) return -1;
+            if (!payCreated)
+                return -1;
 
             return saved.Id;
         }

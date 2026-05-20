@@ -8,12 +8,12 @@ namespace DAL.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        User UserLogin(string email, string password);  // Authenticate user
+        User UserLogin(string email, string password);  
 
-        User GetByEmail(string email); // Get user by email
-        List<User> GetUser(int IsActive); // Get active and inactive users
-        bool VerifyEmail(int userId);  // Mark email as verified
-        bool DeactivateUser(int userId);  // Deactivate user account
+        User GetByEmail(string email); 
+        List<User> GetUser(int IsActive);
+        bool VerifyEmail(int userId);  
+        bool DeactivateUser(int userId);  
 
 
     }

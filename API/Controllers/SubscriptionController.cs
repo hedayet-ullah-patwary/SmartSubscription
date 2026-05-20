@@ -29,7 +29,8 @@ namespace API.Controllers
         public IActionResult Index()
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null) return RedirectToAction("Login", "Auth");
+            if (userId == null) 
+                return RedirectToAction("Login", "Auth");
 
             var subs = service.GetSubscriptionsByUserId(userId.Value);
 
@@ -47,7 +48,9 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult AdminIndex()
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             var subs = service.GetAllSubscriptions();
             var plans = planService.GetAllPlans();
@@ -62,10 +65,16 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult AdminEdit(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null)
+                return guard;
 
             var sub = service.GetById(id);
-            if (sub == null) { TempData["Error"] = "Subscription not found."; return RedirectToAction("AdminIndex"); }
+            if (sub == null)
+            { 
+                TempData["Error"] = "Subscription not found."; 
+                return RedirectToAction("AdminIndex");
+            }
 
             ViewBag.Plans = planService.GetAllPlans();
             return View(sub);
@@ -74,7 +83,9 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult AdminEdit(SubscriptionDTO sub, bool recalcEndDate)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             if (!ModelState.IsValid)
             {
@@ -100,7 +111,9 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult AdminDelete(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             if (service.HasPaymentsForSubscription(id))
             {
@@ -117,10 +130,15 @@ namespace API.Controllers
         public IActionResult Checkout(int planId)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null) return RedirectToAction("Login", "Auth");
+            if (userId == null) 
+                return RedirectToAction("Login", "Auth");
 
             var plan = planService.GetById(planId);
-            if (plan == null) { TempData["Error"] = "Plan not found."; return RedirectToAction("Index", "Plan"); }
+            if (plan == null) 
+            { 
+                TempData["Error"] = "Plan not found."; 
+                return RedirectToAction("Index", "Plan"); 
+            }
 
             if (service.IsSubscriptionActive(userId.Value))
             {
@@ -136,10 +154,15 @@ namespace API.Controllers
         public IActionResult Checkout(int planId, string paymentMethod)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null) return RedirectToAction("Login", "Auth");
+            if (userId == null)
+                return RedirectToAction("Login", "Auth");
 
             var plan = planService.GetById(planId);
-            if (plan == null) { TempData["Error"] = "Plan not found."; return RedirectToAction("Index", "Plan"); }
+            if (plan == null) 
+            { 
+                TempData["Error"] = "Plan not found."; 
+                return RedirectToAction("Index", "Plan");
+            }
 
             if (string.IsNullOrWhiteSpace(paymentMethod))
             {
@@ -183,7 +206,8 @@ namespace API.Controllers
         public IActionResult Create(SubscriptionDTO sub)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null) return RedirectToAction("Login", "Auth");
+            if (userId == null) 
+                return RedirectToAction("Login", "Auth");
 
             sub.UserId = userId.Value;
             var result = service.CreateSubscription(sub);

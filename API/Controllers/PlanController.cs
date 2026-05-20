@@ -30,14 +30,18 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
             return View(new PlanDTO());
         }
 
         [HttpPost]
         public IActionResult Create(PlanDTO plan)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             if (!ModelState.IsValid)
             {
@@ -46,7 +50,11 @@ namespace API.Controllers
             }
 
             var result = service.CreatePlan(plan);
-            if (!result) { ViewBag.Error = "Plan creation failed"; return View(plan); }
+            if (!result) 
+            { 
+                ViewBag.Error = "Plan creation failed"; 
+                return View(plan); 
+            }
 
             TempData["Success"] = "Plan created successfully";
             return RedirectToAction("Index");
@@ -55,19 +63,31 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             var plan = service.GetById(id);
-            if (plan == null) { TempData["Error"] = "Plan not found."; return RedirectToAction("Index"); }
+            if (plan == null) 
+            { 
+                TempData["Error"] = "Plan not found."; 
+                return RedirectToAction("Index");
+            }
             return View(plan);
         }
 
         [HttpPost]
         public IActionResult Edit(PlanDTO plan)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
-            if (!ModelState.IsValid) { ViewBag.Error = "Invalid input"; return View(plan); }
+            if (!ModelState.IsValid)
+            { 
+                ViewBag.Error = "Invalid input"; 
+                return View(plan); 
+            }
 
             var result = service.UpdatePlan(plan);
             TempData[result ? "Success" : "Error"] = result ? "Plan updated." : "Update failed.";

@@ -15,7 +15,6 @@ namespace BLL.Services
             this.data = data;
         }
 
-        // ─── Get All (with optional sort) ─────────────────────────────
         public List<PlanDTO> GetAllPlans(string sortBy = "name")
         {
             var mapper = MapperConfig.GetMapper();
@@ -32,7 +31,6 @@ namespace BLL.Services
             return mapper.Map<List<PlanDTO>>(plans);
         }
 
-        // ─── Get active / inactive ────────────────────────────────────
         public List<PlanDTO> GetPlansActiveorInactive(int isActive)
         {
             var mapper = MapperConfig.GetMapper();
@@ -40,7 +38,6 @@ namespace BLL.Services
             return mapper.Map<List<PlanDTO>>(plans);
         }
 
-        // ─── Get by ID ────────────────────────────────────────────────
         public PlanDTO GetById(int id)
         {
             var mapper = MapperConfig.GetMapper();
@@ -48,7 +45,6 @@ namespace BLL.Services
             return mapper.Map<PlanDTO>(plan);
         }
 
-        // ─── Get by Name ──────────────────────────────────────────────
         public PlanDTO GetByName(string name)
         {
             var mapper = MapperConfig.GetMapper();
@@ -56,7 +52,6 @@ namespace BLL.Services
             return mapper.Map<PlanDTO>(plan);
         }
 
-        // ─── Create ───────────────────────────────────────────────────
         public bool CreatePlan(PlanDTO plan)
         {
             var mapper = MapperConfig.GetMapper();
@@ -64,7 +59,6 @@ namespace BLL.Services
             return data.GetRepository<Plan>().Create(entity);
         }
 
-        // ─── Update ───────────────────────────────────────────────────
         public bool UpdatePlan(PlanDTO plan)
         {
             var mapper = MapperConfig.GetMapper();
@@ -72,7 +66,6 @@ namespace BLL.Services
             return data.GetRepository<Plan>().Update(entity);
         }
 
-        // ─── Delete ───────────────────────────────────────────────────
         public bool DeletePlan(int id)
         {
             return data.GetRepository<Plan>().Delete(id);
@@ -83,7 +76,6 @@ namespace BLL.Services
             return data.GetSubscriptionRepository().HasSubscriptionsForPlan(planId);
         }
 
-        // ─── Activate / Deactivate ────────────────────────────────────
         public bool ActivatePlan(int id)
         {
             return data.GetPlanRepository().ActivatePlan(id);

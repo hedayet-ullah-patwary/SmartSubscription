@@ -29,7 +29,8 @@ namespace DAL.Repositories
         public bool ExtendSubscription(int subscriptionId, int days)
         {
             var subCheck = Find(subscriptionId);
-            if (subCheck == null) return false;
+            if (subCheck == null)
+                return false;
 
             subCheck.EndDate = subCheck.EndDate.AddDays(days);
             return Update(subCheck);

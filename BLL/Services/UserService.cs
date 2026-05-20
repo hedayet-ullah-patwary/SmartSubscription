@@ -69,7 +69,6 @@ namespace BLL.Services
             return mapper.Map<UserDTO>(data);
         }
 
-        // UserService.cs এ যোগ করো
         public List<UserDTO> GetAllUsers()
         {
             var users = factory.GetUserRepository().GetAll();

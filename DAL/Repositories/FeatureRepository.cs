@@ -20,11 +20,6 @@ namespace DAL.Repositories
             return db.Features.FirstOrDefault(x => x.Name == name);
         }
 
-        public List<Feature> GetAllFeatures()
-        {
-            return db.Features.ToList();
-        }
-
         public bool IsFeatureExists(string name)
         {
             return db.Features.Any(x => x.Name == name);

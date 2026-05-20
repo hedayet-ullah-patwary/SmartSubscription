@@ -10,6 +10,6 @@ namespace DAL.Interfaces
         Plan GetByName(string name);
         bool ActivatePlan(int planId);
         bool DeactivatePlan(int planId);
-        List<Plan> GetPlans(int isActive); // Get active and inactive plans
+        List<Plan> GetPlans(int isActive); 
     }
 }

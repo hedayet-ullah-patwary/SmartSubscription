@@ -27,7 +27,8 @@ namespace API.Controllers
         public IActionResult AdminDashboard()
         {
             var role = HttpContext.Session.GetString("UserRole");
-            if (role != "Admin") return RedirectToAction("Login", "Auth");
+            if (role != "Admin") 
+                return RedirectToAction("Login", "Auth");
 
             ViewBag.TotalRevenue = paymentService.GetTotalRevenue();
             ViewBag.TotalPlans = planService.GetPlansActiveorInactive(1).Count;
@@ -48,7 +49,8 @@ namespace API.Controllers
         public IActionResult UserDashboard()
         {
             var role = HttpContext.Session.GetString("UserRole");
-            if (role != "User") return RedirectToAction("Login", "Auth");
+            if (role != "User") 
+                return RedirectToAction("Login", "Auth");
 
             var userId = HttpContext.Session.GetInt32("UserId");
             var user = userService.GetUserEntityById(userId.Value);
@@ -102,7 +104,8 @@ namespace API.Controllers
         public IActionResult VerifyEmailCode(string code)
         {
             var role = HttpContext.Session.GetString("UserRole");
-            if (role != "User") return RedirectToAction("Login", "Auth");
+            if (role != "User") 
+                return RedirectToAction("Login", "Auth");
 
             var userId = HttpContext.Session.GetInt32("UserId");
             var expected = HttpContext.Session.GetString("EmailVerifyCode");
@@ -141,7 +144,8 @@ namespace API.Controllers
         public IActionResult ResendEmailCode()
         {
             var role = HttpContext.Session.GetString("UserRole");
-            if (role != "User") return RedirectToAction("Login", "Auth");
+            if (role != "User") 
+                return RedirectToAction("Login", "Auth");
 
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
@@ -162,7 +166,8 @@ namespace API.Controllers
         public IActionResult Analytics()
         {
             var role = HttpContext.Session.GetString("UserRole");
-            if (role != "Admin") return RedirectToAction("Login", "Auth");
+            if (role != "Admin") 
+                return RedirectToAction("Login", "Auth");
 
             ViewBag.TotalRevenue = paymentService.GetTotalRevenue();
             ViewBag.TotalSubscriptions = subscriptionService.GetAllSubscriptions().Count;

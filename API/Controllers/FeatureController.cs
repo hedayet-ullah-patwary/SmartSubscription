@@ -22,7 +22,9 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Index(string sortBy = "name")
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
             ViewBag.SortBy = sortBy;
             return View(service.GetAllFeatures(sortBy));
         }
@@ -30,9 +32,15 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Create(FeatureDTO feature)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
-            if (!ModelState.IsValid) { ViewBag.Error = "Invalid input"; return RedirectToAction("Index"); }
+            if (!ModelState.IsValid) 
+            { 
+                ViewBag.Error = "Invalid input"; 
+                return RedirectToAction("Index"); 
+            }
 
             var result = service.CreateFeature(feature);
             TempData[result ? "Success" : "Error"] = result ? "Feature created" : "Feature creation failed";
@@ -42,19 +50,30 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly();
+            if (guard != null) 
+                return guard;
 
             var feature = service.GetById(id);
-            if (feature == null) { TempData["Error"] = "Feature not found."; return RedirectToAction("Index"); }
+            if (feature == null) { 
+                TempData["Error"] = "Feature not found."; 
+                return RedirectToAction("Index"); 
+            }
             return View(feature);
         }
 
         [HttpPost]
         public IActionResult Edit(FeatureDTO feature)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
-            if (!ModelState.IsValid) { ViewBag.Error = "Invalid input"; return View(feature); }
+            if (!ModelState.IsValid) 
+            { 
+                ViewBag.Error = "Invalid input"; 
+                return View(feature); 
+            }
 
             var result = service.UpdateFeature(feature);
             TempData[result ? "Success" : "Error"] = result ? "Feature updated." : "Update failed.";
@@ -64,7 +83,9 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var guard = AdminOnly(); if (guard != null) return guard;
+            var guard = AdminOnly(); 
+            if (guard != null) 
+                return guard;
 
             service.DeleteFeature(id);
             TempData["Success"] = "Feature deleted";
