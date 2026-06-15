@@ -90,8 +90,7 @@
               "RelativeToolTip": "BLL\\DTOs\\FeatureDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:53:09.998Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:53:09.998Z"
             },
             {
               "$type": "Document",
@@ -103,8 +102,7 @@
               "RelativeToolTip": "BLL\\Services\\RoleService.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:43:38.352Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:43:38.352Z"
             },
             {
               "$type": "Document",
@@ -116,8 +114,7 @@
               "RelativeToolTip": "DAL\\Interfaces\\ISubscriptionRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:43:19.712Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:43:19.712Z"
             },
             {
               "$type": "Document",
@@ -129,8 +126,7 @@
               "RelativeToolTip": "DAL\\Repositories\\PlanRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:43:15.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:43:15.247Z"
             },
             {
               "$type": "Document",
@@ -142,8 +138,7 @@
               "RelativeToolTip": "DAL\\Repositories\\PaymentRepository.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:42:51.04Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:42:51.04Z"
             },
             {
               "$type": "Document",
@@ -155,8 +150,7 @@
               "RelativeToolTip": "DAL\\Interfaces\\IPlanRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:41:39.702Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:41:39.702Z"
             },
             {
               "$type": "Document",
@@ -168,8 +162,7 @@
               "RelativeToolTip": "DAL\\Interfaces\\IFeatureRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:41:36.219Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:41:36.219Z"
             },
             {
               "$type": "Document",
@@ -181,8 +174,7 @@
               "RelativeToolTip": "BLL\\Services\\PaymentService.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAA3wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:41:23.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:41:23.004Z"
             },
             {
               "$type": "Document",
@@ -194,8 +186,7 @@
               "RelativeToolTip": "BLL\\Services\\FeatureService.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:40:52.988Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:40:52.988Z"
             },
             {
               "$type": "Document",
@@ -207,8 +198,7 @@
               "RelativeToolTip": "API\\Controllers\\SubscriptionController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:40:33.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:40:33.433Z"
             },
             {
               "$type": "Document",
@@ -220,8 +210,7 @@
               "RelativeToolTip": "API\\Controllers\\PlanController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:40:19.439Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:40:19.439Z"
             },
             {
               "$type": "Document",
@@ -233,8 +222,7 @@
               "RelativeToolTip": "API\\Controllers\\PaymentController.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:40:09.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:40:09.78Z"
             },
             {
               "$type": "Document",
@@ -246,8 +234,7 @@
               "RelativeToolTip": "API\\Controllers\\FeatureController.cs",
               "ViewState": "AgIAAFgAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:39:40.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:39:40.73Z"
             },
             {
               "$type": "Document",
@@ -259,8 +246,7 @@
               "RelativeToolTip": "API\\Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:35:57.248Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:35:57.248Z"
             },
             {
               "$type": "Document",
@@ -272,8 +258,7 @@
               "RelativeToolTip": "DAL\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T04:06:16.088Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T04:06:16.088Z"
             },
             {
               "$type": "Document",
@@ -281,9 +266,9 @@
               "Title": "DataAccessFactory.cs",
               "DocumentMoniker": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\DataAccessFactory.cs",
               "RelativeDocumentMoniker": "DAL\\DataAccessFactory.cs",
-              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\DataAccessFactory.cs*",
-              "RelativeToolTip": "DAL\\DataAccessFactory.cs*",
-              "ViewState": "AgIAABQAAAAAAAAAAAAIwDQAAAAJAAAAAAAAAA==",
+              "ToolTip": "D:\\AIUB\\11th semester\\Adv .net\\SmartSubscription\\DAL\\DataAccessFactory.cs",
+              "RelativeToolTip": "DAL\\DataAccessFactory.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAkwBEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-19T04:01:11.556Z",
               "EditorCaption": ""
@@ -298,8 +283,7 @@
               "RelativeToolTip": "API\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-17T14:49:31.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-17T14:49:31.075Z"
             }
           ]
         }
